@@ -46,7 +46,7 @@ jobs:
       - name: Rclone上传
         if: env.RCLONE_UPLOAD == 'true'
         run: |
-          rclone copy -v --transfers 12 --checkers 16 --onedrive-chunk-size 200M --include "*.{tar}" /home/runner/work/finder onedrive:/webbackup/
+          rclone copy -v --transfers 12 --checkers 16 --onedrive-chunk-size 200M /home/runner/work/finder/* onedrive:/webbackup/
       - name: 开始上传
         if: env.GITHUB_UPLOAD == 'true'
         uses: actions/upload-artifact@v2.2.2
