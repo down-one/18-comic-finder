@@ -30,6 +30,9 @@ jobs:
         run: |
           cd ./target
           java -jar -Xms1g -Xmx7g ./*.jar
+      - name: test
+        run: |
+          pwd | cat > /home/runner/work/finder/1.txt
       - name: 开始上传
         uses: actions/upload-artifact@v2.2.2
         with:
