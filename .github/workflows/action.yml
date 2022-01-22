@@ -46,7 +46,7 @@ jobs:
       - name: Rclone上传
         if: env.RCLONE_UPLOAD == 'true'
         run: |
-          rclone copy -v --transfers 12 --checkers 16 --onedrive-chunk-size 200M /home/runner/work/finder/* onedrive:/二次元/漫画/18+/禁漫天堂/
+          rclone copy -v --transfers 12 --checkers 16 --onedrive-chunk-size 200M /home/runner/work/finder/ onedrive:/二次元/漫画/18+/禁漫天堂/
       - name: 开始上传
         if: env.GITHUB_UPLOAD == 'true'
         uses: actions/upload-artifact@v2.2.2
