@@ -43,11 +43,9 @@ jobs:
           mkdir -p /home/runner/.config/rclone/
           chmod 777 /home/runner/.config/rclone/
           mv $GITHUB_WORKSPACE/rclone.conf /home/runner/.config/rclone/
-      - name: 打包上传
+      - name: Rclone上传
         if: env.RCLONE_UPLOAD == 'true'
         run: |
-          cd /home/runner/work/finder
-          ls | awk '{ print "tar zcvf "$0".tgz " $0|"/bin/bash" }'
           rclone copy -v --transfers 12 --checkers 16 --onedrive-chunk-size 200M --include "*.{tar}" /home/runner/work/finder onedrive:/webbackup/
       - name: 开始上传
         if: env.GITHUB_UPLOAD == 'true'
