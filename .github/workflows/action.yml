@@ -47,10 +47,11 @@ jobs:
         if: env.RCLONE_UPLOAD == 'true'
         run: |
           pwd
-          mkdir -p /home/runner/work/result
-          tar -cPvf /home/runner/work/result/finder.tar /home/runner/work/finder/
-          #rclone copy -v --transfers 12 --checkers 16 --onedrive-chunk-size 200M /home/runner/work/finder/ onedrive:/二次元/漫画/18+/禁漫天堂/
-          rclone copy -v --transfers 12 --checkers 16 --onedrive-chunk-size 200M /home/runner/work/result/ onedrive:/二次元/漫画/18+/禁漫天堂/
+          df -h
+          #mkdir -p /home/runner/work/result
+          #tar -cPvf /home/runner/work/result/finder.tar /home/runner/work/finder/
+          rclone copy -v --transfers 12 --checkers 16 --onedrive-chunk-size 200M /home/runner/work/finder/ onedrive:/二次元/漫画/18+/禁漫天堂/
+          #rclone copy -v --transfers 12 --checkers 16 --onedrive-chunk-size 200M /home/runner/work/result/ onedrive:/二次元/漫画/18+/禁漫天堂/
       - name: 开始上传
         if: env.GITHUB_UPLOAD == 'true'
         uses: actions/upload-artifact@v2.2.2
