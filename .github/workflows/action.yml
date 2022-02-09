@@ -47,8 +47,9 @@ jobs:
         if: env.RCLONE_UPLOAD == 'true'
         run: |
           #pwd
-          tar -cvfP finder.tar /home/runner/work/finder/
-          rclone copy -v --transfers 12 --checkers 16 --onedrive-chunk-size 200M /home/runner/work/18-comic-finder/18-comic-finder/ onedrive:/二次元/漫画/18+/禁漫天堂/
+          mkdir -p /home/runner/work/result
+          tar -cvfP /home/runner/work/result/finder.tar /home/runner/work/finder/
+          rclone copy -v --transfers 12 --checkers 16 --onedrive-chunk-size 200M /home/runner/work/result/ onedrive:/二次元/漫画/18+/禁漫天堂/
       - name: 开始上传
         if: env.GITHUB_UPLOAD == 'true'
         uses: actions/upload-artifact@v2.2.2
